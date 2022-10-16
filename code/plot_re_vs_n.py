@@ -1,19 +1,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import r2_score
-dir = "./MODIFIED_SingleChainMC/outputs"
+dir = "./outputs"
+
 re_list = []
 rg_list = []
 x = []
 old_re_val = 0;
+
 for i in range(1,127):
-	f = open(dir+"/"+"RE"+str(i)+".dat", "r")
+	f = open(f"{dir}/RE{str(i)}.dat", "r")
 	re_val = float(f.read())
 	
 	re_list.append(re_val)
 	x.append(i)
 
-	f = open(dir+"/"+"RG"+str(i)+".dat", "r")
+	f = open(f"{dir}/RG{str(i)}.dat", "r")
 	rg_list.append(float(f.read()))
 
 fig, axs = plt.subplots(1, 2)
