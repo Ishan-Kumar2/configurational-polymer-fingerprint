@@ -24,6 +24,9 @@ Also the [boost](https://www.boost.org/) and [GSL](https://coral.ise.lehigh.edu/
 
 ```bash
 g++ -I /path/to/Eigen -I /path/to/spectra/include -c montecarlo.cpp objutils.cpp utils.cpp vars.h main.cpp
+```
+Since the compiled files are also provided, you can directly run
+```bash
 g++ -o run main.o montecarlo.o objutils.o utils.o -lgsl -lboost_program_options
 ```
 
