@@ -2,7 +2,7 @@
 
 Code for the paper [Configurational Polymer Fingerprints for Machine Learning](https://arxiv.org/abs/2311.14744) by Ishan Kumar, Prateek K. Jha
 
-![Image](https://github.com/Ishan-Kumar2/configurational-polymer-fingerprint/blob/main/polymerfingerprint.PNG)
+![Image](https://github.com/Ishan-Kumar2/configurational-polymer-fingerprint/blob/main/polymerfingerprint.png)
 
 ## Highlights of the work
 * Machine learning (ML) model is developed for a coarse-grained, bead-spring model of polymers. 
