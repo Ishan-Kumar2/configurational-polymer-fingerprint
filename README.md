@@ -13,6 +13,7 @@ Code for the paper [Configurational Polymer Fingerprints for Machine Learning](h
 
 There are two parts to the code. The first involves C++ code to run Monte Carlo simulation in order to create the Dataset of fingerprints and descriptors. The second part is the python ML Code which uses the dataset from the previous step to train the Autoencoder and the prediction model.
 
+# Usage
 ## Monte Carlo Simulation 
 First step is to compile the C++ code 
 This requires the Spectra and Eigen libraries to be present. They can be installed using 
