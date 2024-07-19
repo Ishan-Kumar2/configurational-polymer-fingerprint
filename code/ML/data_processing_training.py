@@ -14,9 +14,9 @@ DATASET_PATH = "./full_dataset"
 PLOT_SAVE_PATH = "./1/loss_curves.png"
 WEIGHTS_SAVE_PATH = "./trained_weights"
 
+
 class Dataset:
     def __init__(self, data, train=True):
-
         super(Dataset, self).__init__()
         self.path = data
         self.train = train
@@ -24,14 +24,12 @@ class Dataset:
         # print("data of size",len(self))
 
     def __len__(self):
-
         if self.train is True:
             return len(os.listdir(self.path)) - self.validation_data_length
         else:
             return self.validation_data_length
 
     def __getitem__(self, index):
-
         # First 50k is left out at Validation Data
         if self.train:
             index = index + self.validation_data_length
@@ -117,7 +115,6 @@ val_dl = DataLoader(v, batch_size=BATCH_SIZE, shuffle=False)
 
 class Encoder(nn.Module):
     def __init__(self):
-
         super().__init__()
         self.l1 = nn.Linear(300, 256)
         self.l2 = nn.Linear(256, 128)
@@ -125,7 +122,6 @@ class Encoder(nn.Module):
         self.relu = nn.LeakyReLU()
 
     def forward(self, x):
-
         x = self.relu(self.l1(x))
         x = self.relu(self.l2(x))
         x = self.relu(self.l3(x))
@@ -134,7 +130,6 @@ class Encoder(nn.Module):
 
 class Decoder(nn.Module):
     def __init__(self):
-
         super().__init__()
         self.l1 = nn.Linear(32, 128)
         self.l2 = nn.Linear(128, 256)
@@ -142,7 +137,6 @@ class Decoder(nn.Module):
         self.relu = nn.LeakyReLU()
 
     def forward(self, x):
-
         x = self.relu(self.l1(x))
         x = self.relu(self.l2(x))
         x = self.relu(self.l3(x))
@@ -160,13 +154,11 @@ epoch_losses_val = []
 
 
 def val():
-
     running_loss_1 = 0.0
     encoder.eval()
     decoder.eval()
 
     for i, data in enumerate(val_dl):
-
         data = data[0]
         data = torch.squeeze(data)
         hidden = encoder(data)
@@ -188,14 +180,12 @@ def train():
     prev_val_loss = val()
 
     for epoch in range(MAX_EPOCHS):
-
         running_loss = 0.0
         print(f"Epoch {epoch+1}")
         encoder.train()
         decoder.train()
 
         for i, data in enumerate(train_dl):
-
             data = data[0]
             data = torch.squeeze(data)
             optimizer.zero_grad()
@@ -214,7 +204,6 @@ def train():
         val_loss = val()
 
         if val_loss < prev_val_loss:
-
             print("Saving")
             torch.save(encoder.state_dict(), f"{WEIGHTS_SAVE_PATH}/{epoch}_enc.pt")
             torch.save(decoder.state_dict(), f"{WEIGHTS_SAVE_PATH}/{epoch}_dec.pt")
