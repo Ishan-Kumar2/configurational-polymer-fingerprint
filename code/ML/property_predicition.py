@@ -32,7 +32,6 @@ class Dataset:
             return self.validation_data_length
 
     def __getitem__(self, index):
-
         if self.train:
             index = index + self.validation_data_length
         file_name = self.path + "/" + str(index) + ".txt"
